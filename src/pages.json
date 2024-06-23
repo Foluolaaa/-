@@ -1,0 +1,82 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path" : "pages/write/write",
+			"style" : 
+			{
+				"navigationBarTitleText" : "发布"
+			}
+		},
+		{
+			"path" : "pages/unused/unused",
+			"style" : 
+			{
+				"navigationBarTitleText" : "闲置"
+			}
+		},
+		{
+			"path" : "pages/buy/buy",
+			"style" : 
+			{
+				"navigationBarTitleText" : "求购"
+			}
+		},
+		{
+			"path" : "pages/mine/mine",
+			"style" : 
+			{
+				"navigationBarTitleText" : "我的"
+			}
+		}
+	],
+	"globalStyle": {
+		//导航栏标题颜色及状态栏前景颜色，仅支持 black/white
+		"navigationBarTextStyle": "white",
+		//导航栏标题文字内容，当页面没有配置时生效
+		"navigationBarTitleText": "闲鲤|校园二手交易平台",
+		//导航字体颜色
+		"navigationBarBackgroundColor": "#9D7CC7",
+		//下拉显示出来的窗口的背景色
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#333333",
+		"selectedColor": "#6C8B97",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/image/home_icon.png",
+			"selectedIconPath": "static/image/home_selected_icon.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/unused/unused",
+			"iconPath": "static/image/unused_icon.png",
+			"selectedIconPath": "static/image/unused_selected_icon.png",
+			"text": "闲置"
+		},{
+			"pagePath": "pages/write/write",
+			"iconPath": "static/image/write_icon.png",
+			"selectedIconPath": "static/image/write_selected_icon.png",
+			"text": "发布"
+		},{
+			"pagePath": "pages/buy/buy",
+			"iconPath": "static/image/buy_icon.png",
+			"selectedIconPath": "static/image/buy_selected_icon.png",
+			"text": "求购"
+		},{
+			"pagePath": "pages/mine/mine",
+			"iconPath": "static/image/mine_icon.png",
+			"selectedIconPath": "static/image/mine_selected_icon.png",
+			"text": "我的"
+		}
+		]
+	}
+
+}
