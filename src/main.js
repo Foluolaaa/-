@@ -1,7 +1,7 @@
 import {
 	createSSRApp
 } from "vue";
-//引入 uView UI
+// 引入 uView UI
 import uView from './uni_modules/vk-uview-ui';
 import App from "./App.vue";
 export function createApp() {

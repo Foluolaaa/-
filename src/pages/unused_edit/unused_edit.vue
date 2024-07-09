@@ -35,9 +35,9 @@
 				<u-input v-model="addModel.address" />
 			</u-form-item>
 			<u-form-item prop="image" label="图片:"></u-form-item>
-			<u-upload ref="imgRef" @on-remove="onRemove" @on-change="onChange" :action="action"></u-upload>
+			<u-upload ref="imgRef" :file-list="fileList"  @on-remove="onRemove" @on-change="onChange" :action="action"></u-upload>
 		</u-form>
-		<u-button @click="commit" :custom-style="customStyle">发布</u-button>
+		<u-button @click="commit" :custom-style="customStyle">确定编辑</u-button>
 	</view>
 </template>
 
@@ -47,12 +47,13 @@
 		ref
 	} from 'vue';
 	import {
+		onLoad,
 		onReady
 	} from '@dcloudio/uni-app'
 	import http from '../../common/http.js'
 	import {
 		categoryApi,
-		releaseApi
+		editApi
 	} from '../../api/goods.js'
 	//表单ref属性
 	const form1 = ref()
@@ -103,6 +104,9 @@
 				required: true,
 				message: '请填写价格',
 				trigger: ['change', 'blur'],
+				transform(value){
+					return String(value)
+				}
 			}],
 			userName: [{
 				required: true,
@@ -169,12 +173,21 @@
 	//分类
 	const show = ref(false)
 	//分类数据
+	const cageId = ref('')
 	const selectList = ref([])
 	const getSelectList = async () => {
 		let res = await categoryApi()
 		if (res && res.code == 200) {
 			console.log(res)
 			selectList.value = res.data;
+			//设置分类
+			if(cageId.value){
+				for(let k=0;k<selectList.value.length;k++){
+					if(selectList.value[k].value == cageId.value){
+						addModel.categoryName = selectList.value[k].label;
+					}
+				}
+			}
 		}
 	}
 	//打开分类
@@ -190,20 +203,14 @@
 	//发布提交
 	const commit = ()=>{
 		form1.value.validate(async(valid)=>{
-			console.log(valid)
+			console.log(addModel)
 			if(valid){
-				let res = await releaseApi(addModel)
+				let res = await editApi(addModel)
 				if(res && res.code == 200){
 					console.log(res)
-					if(addModel.type == '0'){
-						uni.switchTab({
-							url:'../unused/unused'
-						})
-					}else{
-						uni.switchTab({
-							url:'../buy/buy'
-						})
-					}
+					uni.navigateTo({
+						url:'../my_unused/my_unused'
+					})
 					//清空数据
 					form1.value.resetFields()
 					imgUrl.value = []
@@ -227,8 +234,46 @@
 	onReady(() => {
 		//设置表单验证规则
 		form1.value.setRules(rules);
+		//设置图片回显
+		imgRef.value.lists = fileList.value
 		//获取分类数据
 		getSelectList()
+	})
+	
+	onLoad((options)=>{
+		imgUrl.value = [];
+		fileList.value = [];
+		const goods = JSON.parse(options.goods)
+		cageId.value = goods.categoryId;
+		console.log(goods)
+		addModel.goodsId = goods.goodsId;
+		addModel.categoryId = goods.categoryId;
+		addModel.image = goods.image;
+		//物品的图片回显
+		if (goods.image) {
+			let imgs = goods.image.split(",");
+			for(let g=0;g<imgs.length;g++){
+				imgUrl.value.push(imgs[g]);
+				let obj = {url:''}
+				obj.url = imgs[g]
+				fileList.value.push(obj)
+			}
+		}
+		addModel.goodsName = goods.goodsName;
+		addModel.goodsDesc = goods.goodsDesc;
+		addModel.address = goods.address;
+		addModel.goodsPrice = goods.goodsPrice
+		addModel.userName = goods.userName;
+		addModel.phone = goods.phone
+		addModel.type = goods.type
+		addModel.wxNum = goods.wxNum
+		//设置类型
+		for(let i=0;i<list.length;i++){
+			if(list[i].value == goods.type){
+				addModel.name = list[i].name;
+			}
+		}
+		
 	})
 </script>
 
