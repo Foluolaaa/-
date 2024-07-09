@@ -20,7 +20,7 @@ import java.util.Date;
 @RequestMapping("/api/goods")
 public class GoodsController {
     @Autowired
-    private GoodsService goodsService; // 引入service层
+    private GoodsService goodsService;
 
     //发布
     @PostMapping("/release")
@@ -38,7 +38,7 @@ public class GoodsController {
     public ResultVo getList(GoodsListParm parm){
         //构造分页对象
         IPage<Goods> page = new Page<>(parm.getCurrentPage(),parm.getPageSize());
-        //构造查询条件 1、商品的名称不为空 2、商品未被删除 3、根据创建时间排序
+        //构造查询条件
         QueryWrapper<Goods> query = new QueryWrapper<>();
         query.lambda().like(StringUtils.isNotEmpty(parm.getGoodsName()),Goods::getGoodsName,parm.getGoodsName())
                 .eq(Goods::getDeleteStatus,"0")
@@ -82,4 +82,5 @@ public class GoodsController {
         }
         return ResultUtils.error("删除失败!");
     }
+
 }

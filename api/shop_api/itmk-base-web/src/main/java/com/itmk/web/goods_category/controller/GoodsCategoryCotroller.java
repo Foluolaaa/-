@@ -65,7 +65,7 @@ public class GoodsCategoryCotroller {
     }
 
     //小程序分类
-    @GetMapping("getSelectList")
+    @GetMapping("/getSelectList")
     public ResultVo getSelectList(){
         //查询分类列表
         QueryWrapper<GoodsCategory> query = new QueryWrapper<>();

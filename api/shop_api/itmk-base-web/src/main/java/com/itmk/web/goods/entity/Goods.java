@@ -19,8 +19,8 @@ public class Goods {
     //发布人id
     private Long userId;
     //订单id
-     @TableField(exist = false)
-     private Long orderId;
+    @TableField(exist = false)
+    private Long orderId;
     //分类id
     private Long categoryId;
     //类型 0：闲置 1：求购
