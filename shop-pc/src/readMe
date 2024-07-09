@@ -1,0 +1,32 @@
+src
+├── api
+│   ├── category 
+│   │   ├── CategoryModel.ts     // 分类相关的数据模型
+│   │   ├── index.ts             // 分类相关的API接口
+│   ├── goods 
+│   │   ├── GoodsModel.ts        // 商品相关的数据模型
+│   │   ├── index.ts             // 商品相关的API接口
+│   ├── report
+│   │   ├── ReportModel.ts       // 举报相关的数据模型
+│   │   ├── index.ts             // 举报相关的API接口
+│   ├── user
+│   │   ├── UserModel.ts         // 用户相关的数据模型
+│   │   ├── index.ts             // 用户相关的API接口
+│   ├── wxuser
+│   │   ├── WxUserModel.ts       // 微信用户相关的数据模型
+│   │   ├── index.ts             // 微信用户相关的API接口
+├── assets                       // 静态资源文件，如图片、字体等
+├── components                   // 可复用的React组件
+├── hooks                        // 自定义的React Hooks
+├── http                         // HTTP请求相关的配置和工具
+├── layout                       // 布局相关的组件
+├── router                       // 路由配置
+├── store
+│   ├── menu                     // 菜单相关的状态管理
+├── type                         // 全局类型定义文件
+├── utils                        // 工具函数
+├── views
+│   ├── goods                    // 商品管理相关的页面
+│   ├── login                    // 登录相关的页面
+│   ├── report                   // 举报管理相关的页面
+│   ├── system                   // 系统管理相关的页面

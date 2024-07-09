@@ -43,7 +43,7 @@
       @size-change="sizeChange"
       @current-change="currentChange"
       :current-page.sync="searchParm.currentPage"
-      :page-sizes="[1,20, 40, 80, 100]"
+      :page-sizes="[10,20, 40, 80, 100]"
       :page-size="searchParm.pageSize"
       layout="total, sizes, prev, pager, next, jumper"
       :total="searchParm.total" background>

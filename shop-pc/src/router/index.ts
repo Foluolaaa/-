@@ -52,17 +52,7 @@ const routes: Array<RouteRecordRaw> = [
           icon: "Wallet",
           roles: ["sys:userList"],
         },
-      },
-      {
-        path: "/menuList",
-        component: () => import('@/views/system/MenuList.vue'),
-        name: "menuList",
-        meta: {
-          title: "菜单管理",
-          icon: "Menu",
-          roles: ["sys:menu"],
-        },
-      },
+      }
     ],
   },
   {
@@ -90,75 +80,21 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/goods/UnusedList.vue'),
         name: "unusedList",
         meta: {
-          title: "闲置商品",
+          title: "闲置与求购商品",
           icon: "Wallet",
           roles: ["sys:unusedList"],
         },
       },
       {
-        path: "/buyList",
-        component: () => import('@/views/goods/BuyList.vue'),
-        name: "buyList",
+        path: "/report",
+        component: () => import('@/views/report/Index.vue'),
+        name: "report",
         meta: {
-          title: "求购商品",
-          icon: "Wallet",
-          roles: ["sys:buyList"],
-        },
-      },
-    ],
-  },
-  {
-    path: "/order",
-    component: Layout,
-    name: "order",
-    meta: {
-      title: "订单管理",
-      icon: "Setting",
-      roles: ["sys:order"],
-    },
-    children: [
-      {
-        path: "/unusedOrder",
-        component: () => import('@/views/order/UnusedOrder.vue'),
-        name: "unusedOrder",
-        meta: {
-          title: "闲置订单",
+          title: "投诉管理",
           icon: "UserFilled",
-          roles: ["sys:unusedOrder"],
-        },
-      },
-      {
-        path: "/buyOrder",
-        component: () => import('@/views/order/BuyOrder.vue'),
-        name: "buyOrder",
-        meta: {
-          title: "求购订单",
-          icon: "Wallet",
-          roles: ["sys:buyOrder"],
-        },
-      },
-    ],
-  },
-  {
-    path: "/comment",
-    component: Layout,
-    name: "comment",
-    meta: {
-      title: "评论管理",
-      icon: "Setting",
-      roles: ["sys:comment"],
-    },
-    children: [
-      {
-        path: "/commentList",
-        component: () => import('@/views/comment/CommentList.vue'),
-        name: "commentList",
-        meta: {
-          title: "评论列表",
-          icon: "UserFilled",
-          roles: ["sys:commentList"],
-        },
-      },
+          roles: ["sys:report"],
+        }
+      }
     ],
   }
 ]
